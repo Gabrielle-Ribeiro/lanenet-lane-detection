@@ -133,15 +133,22 @@ def test_lanenet(image_path, weights_path):
             instance_seg_image[0][:, :, i] = minmax_scale(instance_seg_image[0][:, :, i])
         embedding_image = np.array(instance_seg_image[0], np.uint8)
 
-        plt.figure('mask_image')
-        plt.imshow(mask_image[:, :, (2, 1, 0)])
-        plt.figure('src_image')
-        plt.imshow(image_vis[:, :, (2, 1, 0)])
-        plt.figure('instance_image')
-        plt.imshow(embedding_image[:, :, (2, 1, 0)])
-        plt.figure('binary_image')
-        plt.imshow(binary_seg_image[0] * 255, cmap='gray')
-        plt.show()
+        #plt.figure('mask_image')
+        #plt.imshow(mask_image[:, :, (2, 1, 0)])
+        #plt.figure('src_image')
+        #plt.imshow(image_vis[:, :, (2, 1, 0)])
+        #plt.figure('instance_image')
+        #plt.imshow(embedding_image[:, :, (2, 1, 0)])
+        #plt.figure('binary_image')
+        #plt.imshow(binary_seg_image[0] * 255, cmap='gray')
+        #plt.show()
+        
+        # Changing code, so I can see the images in a jupyter notebook
+        # Print True if the image is generate
+        print(cv2.imwrite("mask_image.jpg", mask_image))
+        print(cv2.imwrite("src_image.jpg", image_vis))
+        print(cv2.imwrite("instance_image.jpg", embedding_image))
+        print(cv2.imwrite("binary_image.jpg", binary_seg_image[0]* 255))
 
     sess.close()
 
